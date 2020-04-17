@@ -77,10 +77,14 @@ function ToDo({ task, doneTask , deleteTask, redoTask, editTask, funcSwitching})
 				<Card.Body className = "text-center pt-0">
 					<Card.Title ref={titleRef} className={task.isDone ? "crossed-text" : ""} 
 						contentEditable={isEditable}>
-						{task.title}
+						<span className={isEditable ? "editable-text" : ""}>
+							{task.title}
+						</span>
 					</Card.Title>
 
-					<Card.Text ref={textRef} className="todo-text" contentEditable={isEditable}>{task.text}</Card.Text>
+					<Card.Text ref={textRef} className="todo-text" contentEditable={isEditable}>
+						<span className={isEditable ? "editable-text" : ""}>{task.text}</span>
+					</Card.Text>
 					{ !task.isDone === true ? ( 
 						<>
 							<Button className="col-9 col-md-5 col-lg-4 m-1" variant="success" onClick={() => doneTask(idx)} disabled={isBtnDisabled}> Done </Button>
@@ -242,7 +246,10 @@ function Tasks() {
 					
 					<div className="container row justify-content-around">
 				    	{ pendingTasks.length === 0 ? (
-				    			<h3>No tasks pending</h3>
+				    			<>
+				    			<Icon.FileEarmark className="col-9 empty-list" />
+				    			<h5 className="col-9 text-center">No tasks pending</h5>
+				    			</>
 				    		) : (
 					    		pendingTasks.map(todo => (
 					    		<ToDo 
@@ -263,7 +270,10 @@ function Tasks() {
 					<div className="container row justify-content-around">
 							
 					    	{ doneTasks.length === 0 ? (
-					    			<h3>No tasks done</h3>
+					    			<>
+					    			<Icon.FileEarmarkCheck className="col-9 empty-list" />
+					    			<h5 className="col-9 text-center">No tasks marked as done</h5>
+					    			</>
 					    		) : (
 						    		doneTasks.map(todo => (
 							    		<ToDo 
