@@ -78,3 +78,16 @@ code {
 .crossed-text.card-title.h5 {
 	text-decoration: line-through;
 }
+
+.editable-text {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #d9bf77;
+}
+
+.empty-list {
+	width: 3em !important;
+	height: 3em !important;
+	fill: black;
+	margin-top: 5px;
+}
